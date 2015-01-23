@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>doggerclient</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+  <link rel="import" href="bower_components/font-roboto/roboto.html">
+
+  <link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
+  <link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
+  <link rel="import" href="bower_components/core-animated-pages/core-animated-pages.html">
+
+  <link rel="import" href="bower_components/core-icon-button/core-icon-button.html">
+  <link rel="import" href="bower_components/core-icons/core-icons.html">
+  <link rel="import" href="bower_components/core-icon/core-icon.html">
+  <link rel="import" href="bower_components/core-label/core-label.html">
+
+
+  <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+  <link rel="import" href="bower_components/paper-input/paper-input.html">
+  <link rel="import" href="bower_components/paper-button/paper-button.html">
+  <link rel="import" href="bower_components/paper-shadow/paper-shadow.html">
+  <link rel="import" href="bower_components/paper-toast/paper-toast.html">
+  <link rel="import" href="bower_components/paper-toggle-button/paper-toggle-button.html">
+
+
+  <link rel="import" href="bower_components/shared-lib/core-shared-lib.html">
+
+
+  <link rel="import" href="components/dogger-table.html">
+  <link rel="import" href="components/dogger-settings.html">
+  <link rel="import" href="components/dogger-logger.html">
+  <link rel="import" href="components/dogger-data.html">
+  <link rel="import" href="components/error-report.html">
+
+  <link rel="stylesheet" href="css/styles.css">
+
+
+</head>
+
+
+<body  fullbleed vertical layout unresolved>
+
+  <core-header-panel flex>
+    <core-toolbar>
+      <paper-icon-button id="navicon" icon="settings" onclick="globble.transitionSelector();">
+      </paper-icon-button>
+      <div>
+        Apps Script database log
+      </div>
+    </core-toolbar>
+
+    <app-globals id="globals"></app-globals>
+
+
+    <core-animated-pages transitions="slide-from-right">
+
+      <section>
+        <div>
+          <dogger-logger></dogger-logger>
+        </div>
+      </section>
+
+      <section>
+        <div>
+          <dogger-settings></dogger-settings>
+        </div>
+      </section>
+
+    </core-animated-pages>
+
+
+    <dogger-data></dogger-data>
+    <error-report></error-report>
+
+  </core-header-panel>
+
+  <script src="js/main.js"></script>
+
+</body>
+</html>

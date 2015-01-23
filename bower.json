@@ -1,0 +1,16 @@
+{
+  "name": "doggerclient",
+  "description": "a client to read dbabstraction log files written by apps script",
+  "homepage": "www.mcpher.com",
+  "keywords": [
+  ],
+  "author": "bruce@mcpher.com",
+  "private": true,
+  "dependencies": {
+    "polymer": "Polymer/polymer#latest",
+    "shared-lib":"Polymer/core-shared-lib#latest",
+    "paper-elements": "Polymer/paper-elements#latest",
+    "core-animated-pages":"Polymer/core-animated-pages#latest"
+
+  }
+}

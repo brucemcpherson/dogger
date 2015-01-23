@@ -1,0 +1,73 @@
+
+<polymer-element name="dogger-data">
+
+  <template>
+      <core-shared-lib url="{{url}}" id="coresharedlib" on-core-shared-lib-load={{loaded}}></core-shared-lib>
+  </template>
+
+  <script>
+    (function() {
+
+      function getCallback() {
+        return "&callback=%%callback%%";
+      }
+
+      Polymer('dogger-data',{
+
+                // only tries every now and again
+        runLater: function (u,t) {
+          this.async (function(a) {
+            this.url = a.url;
+          }, {url:u}, t);
+        },
+
+        // schedules a retrieve by tweaking the url
+        // only tries every now and again
+        schedule: function (next,doitnow) {
+          // time to run another
+
+          var after = next || 0;
+          var u =  globble.getUrl() +
+              "&after=" + after +
+              "&provoke=" + new Date().getTime() +  getCallback() ;
+          this.runLater(u,doitnow ? 0 : globble.settings.schedule);
+        },
+
+        //clear the log
+        clear: function (extraParams) {
+          // time to run another
+          var u = globble.getUrl() + "&action=clear" +
+              "&provoke=" + new Date().getTime() +  extraParams + getCallback() ;
+          globble.changeThread();
+          this.runLater(u,0);
+        },
+
+        // enter demo mode
+        demo: function () {
+          this.clear("&demo=start");
+        },
+
+        scheduleDemo: function() {
+          this.runLater (globble.settings.demoUrl + "?action=demo" + getCallback() ,  0);
+        },
+
+        // initial data acess
+        ready:function() {
+          if (globble.settings.demoMode) {
+            this.demo();
+          }
+          else {
+            this.schedule(0,true);
+          }
+        },
+
+        loaded: function (e) {
+          globble.dataLoaded (e);
+        }
+
+      });
+
+    })();
+  </script>
+
+</polymer-element>

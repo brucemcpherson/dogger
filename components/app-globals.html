@@ -1,0 +1,57 @@
+<polymer-element name="app-globals">
+
+  <template is="auto-binding">
+    <core-localstorage
+      value="{{settings}}"
+      name="settingsstorage">
+
+    </core-localstorage>
+  </template>
+
+  <script>
+
+  (function() {
+
+    var settings;
+
+    var defaultSettings = {
+      webAppId:"AKfycbyt2tjcfpec13_KSXPpHN51SL2s1pYQSf0LymO9N5SB",
+      url:"",
+      siloId:"doggerlogger",
+      dbId:"mcphercom",
+      cacheCommunity:"jesuischarlie",
+      appsScriptUrl:"https://script.google.com/macros/s",
+      exec:"dev",
+      schedule:10618,
+      enabletoast:true
+    };
+
+
+    // these variables are shared by all instances of app-globals
+
+    function getUrl () {
+      return settings.appsScriptUrl + "/" +
+              settings.webAppId + "/" +
+              settings.exec +
+              "?cachecommunity=" + settings.cacheCommunity +
+              "&siloid=" + settings.siloId +
+              "&dbid=" + settings.dbId;
+    }
+
+    Polymer({
+       ready: function() {
+         // copy global values into instance properties
+         this.settings = settings || defaultSettings;
+         this.settings.url = getUrl();
+       },
+       setUrl: function () {
+         this.settings.url = getUrl();
+       },
+       flickToast: function () {
+         this.settings.enabletoast = !this.settings.enabletoast
+       }
+    });
+  })();
+  </script>
+</polymer-element>
+

@@ -1,0 +1,83 @@
+
+
+paper-input {
+  width:40em;
+  font-size:.7em;
+}
+
+paper-button {
+  background-color:#536DFE;
+  color:#FFFFFF;
+}
+
+paper-shadow {
+  margin:10px;
+  background-color:#FFFFFF;
+  color:#212121;
+	padding:10px 20px;
+}
+paper-toast {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color:#ffffff;
+  background:#536DFE;
+  font-size:.8em;
+}
+
+paper-toggle-button::shadow [checked] .toggle {
+  background-color: #536DFE;
+}
+
+.danger {
+  background-color:red;
+  color:#FFFFFF;
+}
+.doggertable, .doggersettingstable {
+	margin:0px;padding:0px;
+	width:100%;
+}
+.doggertable, .doggersettingstable table{
+
+  border-collapse: collapse;
+  border-spacing: 0;
+	width:100%;
+	height:100%;
+	margin:0px;padding:0px;
+
+}
+
+.doggertable tr:nth-child(odd){
+  background-color:#FFECB3;
+  color:#212121;
+}
+.doggertable tr:nth-child(even) {
+  background-color:#B6B6B6;
+  color:#212121;
+}
+
+.doggertable  td {
+	vertical-align:middle;
+	text-align:left;
+	padding:4px;
+	color:#212121;
+	font-size:0.7em;
+	border:1px solid #FFFFFF;
+}
+
+.doggersettingstable  td{
+	vertical-align:middle;
+	text-align:left;
+	padding:1px 4px 1px 4px;
+	color:#212121;
+}
+
+.doggertable tr:first-child td{
+  background-color:#536DFE;
+  color:#FFFFFF;
+	text-align:center;
+	font-size:0.9em;
+
+}
+
+

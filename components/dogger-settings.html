@@ -1,0 +1,180 @@
+
+<polymer-element name="dogger-settings"  id="doggersettings">
+
+  <template>
+
+    <link rel="stylesheet" href="../css/local.css">
+
+      <paper-shadow z="2">
+        <table class="doggersettingstable">
+
+          <tr>
+            <td>
+              <paper-input floatingLabel label="webapp id" type="text" value="{{settings.webAppId}}"
+                required on-change="{{validate}}">
+              </paper-input>
+            </td>
+            <td>
+
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <paper-input  floatingLabel label="cache community" type="text" value="{{settings.cacheCommunity}}"
+                 on-change="{{validate}}">
+              </paper-input>
+            </td>
+            <td>
+              <paper-input  floatingLabel label="check for data every ms" type="text" value="{{settings.schedule}}"
+                  required on-change="{{validate}}" >
+              </paper-input>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <paper-input  floatingLabel label="silo id" type="text" value="{{settings.siloId}}"
+                  required on-change="{{validate}}">
+              </paper-input>
+            </td>
+            <td>
+              <core-label>
+                Show data transfer messages
+              </core-label>
+              <paper-toggle-button checked="{{settings.enableToast}}" on-change="{{validate}}">
+              </paper-toggle-button>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <paper-input  floatingLabel label="db id" type="text" value="{{settings.dbId}}"
+                  required on-change="{{validate}}">
+              </paper-input>
+            </td>
+            <td>
+              <paper-input  floatingLabel label="demo URL" type="text" value="{{settings.demoUrl}}"
+                  required on-change="{{validate}}">
+              </paper-input>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <paper-input  floatingLabel label="thread (leave blank for all threads)"
+                  type="text" value="{{settings.thread}}"
+                  required on-change="{{changeThread}}">
+              </paper-input>
+            </td>
+            <td>
+              <core-label>
+                Demo mode
+              </core-label>
+              <paper-toggle-button checked="{{settings.demoMode}}" on-change="{{validate}}">
+              </paper-toggle-button>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <paper-input  floatingLabel label="app script url" type="text" value="{{settings.appsScriptUrl}}"
+                  required on-change="{{validate}}" >
+              </paper-input>
+            </td>
+            <td>
+
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <paper-input  floatingLabel label="dev webapp id" type="text" value="{{settings.devAppId}}"
+                  required on-change="{{changeThread}}" >
+              </paper-input>
+            </td>
+            <td>
+
+            </td>
+          </tr>
+
+           <tr>
+            <td>
+              <core-label>
+                Use latest development version of webapp
+              </core-label>
+              <paper-toggle-button checked="{{settings.enableDev}}" on-change="{{changeThread}}">
+              </paper-toggle-button>
+            </td>
+            <td>
+
+            </td>
+          </tr>
+
+           <tr>
+            <td>
+
+            </td>
+            <td>
+              <span style="float:left">
+                 <paper-button on-click="{{factorySettings}}" class="danger">
+                   reset
+                  </paper-button>
+              </span>
+              <span style="float:right">
+                 <paper-button on-click="{{clearLog}}">
+                   clear log
+                 </paper-button>
+              </span>
+            </td>
+          </tr>
+
+
+        </table>
+
+    </paper-shadow>
+
+  </template>
+
+  <script>
+    (function() {
+
+      Polymer('dogger-settings',{
+
+        validate: function () {
+          globble.storageSave();
+        },
+
+        ready:function() {
+          this.settings = globble.settings;
+          this.validate();
+        },
+
+        // if the thread changes then the data is likely to be invalid
+        changeThread: function () {
+          globble.changeThread();
+          this.validate();
+        },
+
+        // reset to factory settings
+        factorySettings: function () {
+          globble.storageRemove();
+          globble.makeSettings();
+          this.settings = globble.settings;
+          this.validate();
+          globble.changeThread();
+        },
+
+        clearLog: function () {
+          globble.clearLog();
+          globble.changeThread();
+        }
+
+
+
+      });
+
+    })();
+  </script>
+
+</polymer-element>

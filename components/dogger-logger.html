@@ -1,0 +1,29 @@
+
+<polymer-element name="dogger-logger">
+
+  <template>
+    <link rel="stylesheet" href="../css/local.css">
+
+    <paper-shadow z="2">
+
+          <dogger-table id="doggertable"></dogger-table>
+
+    </paper-shadow>
+
+  </template>
+
+
+  <script>
+    (function() {
+
+      Polymer('dogger-logger',{
+        ready:function() {
+        },
+        updateData: function(data) {
+          this.$.doggertable.updateData(data);
+        }
+      });
+
+    })();
+  </script>
+</polymer-element>

@@ -1,0 +1,26 @@
+
+body {
+  font-family: RobotoDraft, sans-serif;
+  color: #212121;
+  background-color:#FFC107;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-touch-callout: none;
+}
+
+html, body , section {
+  height: 100%;
+  margin: 0;
+}
+core-header-panel {
+  height: 100%;
+}
+
+core-toolbar {
+  background:#FFA000;
+  color:#212121;
+}
+

@@ -1,0 +1,31 @@
+
+<polymer-element name="error-report">
+
+  <template>
+      <link rel="stylesheet" href="../css/local.css">
+      <paper-toast id="jsonptoast" text="{{message}}"></paper-toast>
+  </template>
+
+
+
+  <script>
+    (function() {
+
+      Polymer('error-report',{
+        ready:function() {
+        },
+        message: function () {
+          this.message = "";
+        },
+        show: function (mess) {
+          this.message = mess;
+          if (globble.settings.enableToast) {
+            this.$.jsonptoast.show();
+          }
+        }
+      });
+
+    })();
+  </script>
+
+</polymer-element>
